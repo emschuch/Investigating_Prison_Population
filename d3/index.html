@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Investigating the Prison Population</title>
+	<meta charset='utf-8'>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<link rel="stylesheet" type="text/css" href="crime.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body class="container">
+
+	<h1>Investigating the Prison Population</h1>
+
+	<div id="p1">
+		<p style="text-align: left;">As of 2012, there were almost 1.5 million inmates in state and federal correctional facilities. If you include the number of people held in local jails, there were 2.2 million people behind bars in the United States. In a <a href="https://www.whitehouse.gov/the-press-office/2015/07/14/remarks-president-naacp-conference" target="_blank">July 14th speech to the NAACP</a>, President Obama spoke of the need for criminal justice reform, saying “Over the last few decades, we’ve also locked up more and more nonviolent drug offenders than ever before, for longer than ever before. And that is the real reason our prison population is so high.” But, as <a href="http://www.newyorker.com/news/news-desk/the-real-answer-to-mass-incarceration" target="_blank">Gilad Edelman pointed out in <em>The New Yorker</em></a>, this is “one of the most enduring myths of criminal-justice reform.”</p>
+
+		<p style="text-align: left;">It is true that roughly half of federal inmates are held on drug offenses, but federal correctional facilities account for only about 13% of all prison inmates. State facilities house 87% of inmates, which is over 1.3 million people. 54% of state inmates are being held for violent offenses. So inmates convicted of violent offenses account for a much larger share of all inmates than drug offenders, nearly half of all inmates in both state and federal facilities.</p>
+	</div>
+
+	<div id="p2">
+		<p style="text-align: left;">Since such a large number of inmates are classified as violent, I set out to investigate the prison population with the goal of making recommendations for reducing violent crime. If we can reduce the number of violent criminals, perhaps we can reduce the prison population as a whole. My initial plan was to use classification modeling to predict whether inmates were violent or nonviolent offenders and to use the important features from these models to see what factors cause inmates to be classified as violent.</p>
+
+		<p style="text-align: left;">The flaw in my plan was that you cannot assume causation from predictive features (more on that later), so it is important to be careful when interpreting the model. However, my classification model still uncovered some interesting details about the prison population.</p>
+
+		<p style="text-align: left;">The data I used was the <a href="http://www.icpsr.umich.edu/icpsrweb/NACJD/series/70/studies/4572?fundingAgency=United+States+Department+of+Justice.+Office+of+Justice+Programs.+Bureau+of+Justice+Statistics&amp;paging.startRow=1" target="_blank">2004 Survey of Inmates in State and Federal Correctional Facilities</a> conducted for the Bureau of Justice Statistics. I looked only at inmates in state facilities who had been convicted and had the crime for which they were being held recorded in the dataset. This sample included just over 8000 inmates. I then focused on the survey questions which provided demographic and lifestyle information for these inmates. From this, I built various types of classification models, evaluating their accuracy and true positive rates.</p>
+
+		<p style="text-align: left;">My best model was a linear Support Vector Machine which achieved an accuracy of 67% and true positive rate of 82%. Looking at the coefficients for this model, one in particular jumped out at me – if an inmate held either a high school degree or GED, my model predicted that they were more likely to be incarcerated for a violent crime than a nonviolent crime. Wait… WHAT?! Does this mean that having a high school education makes someone more likely to be violent?! NO. And thus I realized the flaw in my initial plan – YOU CANNOT ASSUME CAUSATION FROM PREDICTIVE FEATURES!</p>
+
+		<p style="text-align: left;">Having a high school education does not make someone more likely to be violent, but this coefficient drew my attention. I shifted my focus away from violent crime because I felt that the incarceration rate of prisoners with and without a high school education was worth investigating more closely.</p>
+
+		<p style="text-align: left;"><a href="https://www.census.gov/hhes/socdemo/education/data/cps/2014/tables.html" target="_blank">The US Census Bureau</a> estimates that about 88% of the population over 25 years of age has a high school education, while of the 8000 inmates in my sample, only 58% had received either a high school diploma or GED. That is, someone without a high school education is more likely to be incarcerated than someone with an education.</p>
+
+		<p style="text-align: left;">I looked back into my data and grouped inmates, not just as violent or nonviolent, but by the type of crime they had committed. These included violent crimes, drug crimes, property crimes, public order crimes, and other types of crime.</p>
+
+		<div>
+			<table class="table" style="width: 60%;">
+				<tbody>
+					<tr>
+						<th class="th">TYPE OF CRIME</th>
+						<th class="th">EXAMPLES</th>
+					</tr>
+					<tr>
+						<td class="td">Violent</td>
+						<td class="td">Murder, rape, assault</td>
+					</tr>
+					<tr>
+						<td class="td">Drug</td>
+						<td class="td">Drug possession, drug trafficking</td>
+					</tr>
+					<tr>
+						<td class="td">Property</td>
+						<td class="td">Burglary, theft, vandalism</td>
+					</tr>
+					<tr>
+						<td class="td">Public Order</td>
+						<td class="td">DUI, drunkenness/vagrancy, prostitution</td>
+					</tr>
+					<tr>
+						<td class="td">Other</td>
+						<td class="td">Accessory, accomplice, aiding and abetting</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<p style="text-align: left;">The high school education rate was higher than average for inmates who were incarcerated for violent crimes at 60%. Of the inmates convicted of the four types of nonviolent crimes, those held for drug and public order crimes were the least likely to have a high school education – 52% of inmates held for drug crimes and 55% of those held for public order crimes had a high school diploma or GED.</p>
+	</div>
+
+	<div id="p3">
+		<p style="text-align: left;">This quickly becomes not just an issue of educational attainment, but also of economics. Children from low income families are <a href="https://nces.ed.gov/pubs2012/2012006.pdf" target="_blank">5 times as likely to drop out of school</a> than their higher-income peers. In addition, less education can severely limit employment opportunities and future income level. <a href="http://www.census.gov/compendia/statab/2012/tables/12s0232.pdf" target="_blank">The Census Bureau estimated in 2009</a> that the mean earnings for someone with less than a high school diploma was about $20K per year. This is $10K less than the earnings of a high school graduate who averages about $30K, and less than half of the average over all education levels which is $42.5K. The gap in earnings grows wider as educational attainment increases.</p>
+		
+		<p style="text-align: left;">It makes perfect sense that those with more advanced degrees have much higher earning potential, but the discrepancy between the education level of prison inmates and the general population leads me to believe that we have left too few options for many in the United States, particularly children from low-income families. It appears that we’ve created a wall separating the poor from opportunities in society, in many cases quite literally by putting them in jail. It is a complicated task, but to deal with the problem of mass incarceration, we need to address the disparities in educational attainment and income.</p>
+
+	</div>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.js'></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+	<script type="text/javascript" src='crime.js'></script>
+</body>
+</html>

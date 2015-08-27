@@ -1,0 +1,123 @@
+
+#crime h1 {
+  margin: 50px 0;
+}
+
+#crime svg {
+  margin:70px 0;
+}
+
+#crime .box_chart {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  overflow: visible;
+}
+
+#crime .container {
+  max-width: 1152px;
+}
+
+#crime .chart_label {
+  text-transform: uppercase;
+    font-size: 18px;
+  color: #333;
+}
+
+#crime .chart_title {
+  font-size: 32px;
+}
+
+#crime .chart_reveal {
+  text-transform: uppercase;
+  color: #333;
+  font-size: 18px;
+}
+
+#crime .chart_subtitle2 {
+    text-transform: uppercase;
+    color: #333;
+    font-size: 18px;
+}
+
+#crime .clearfix {
+  clear: both;
+}
+
+#crime .line_group, .line_group2 {
+    stroke: white;
+    stroke-width: 2px;
+}
+
+#crime .nav_button {
+    fill: #f5f5f5;
+    stroke: #d3d3d3;
+    stroke-width: 2px;
+}
+
+#crime .nav_button:hover {
+    fill: #d3d3d3;
+    stroke: #c0c0c0;
+    stroke-width: 2px;
+}
+
+#crime .nav--active {
+    fill: #d3d3d3;
+    stroke: #c0c0c0;
+    stroke-width: 2px;
+}
+
+#crime .play_botton {
+  cursor: pointer;
+}
+
+#crime .play_button-rect {
+    fill: white;
+    stroke: #d3d3d3;
+    stroke-width: 1px;
+}
+
+#crime .play_button-text {
+    cursor: pointer;
+    fill: #696969;
+    font-size: 14px;
+}
+
+#crime .source {
+  fill: gray;
+  font-size: 14px;
+}
+
+#crime .stacked_bar {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  overflow: visible;
+  margin: 0;
+}
+
+#crime .stacked_bar-area {
+    margin: 80px 0;
+/*  position: absolute;
+  top: 0;
+  left: 0;*/
+}
+
+#crime .table {
+  text-align: left;
+  font-size: 15px;
+  margin: 60px auto;
+}
+
+#crime .table, .th, .td {
+  border: 1px solid #d3d3d3;
+}
+
+#crime .th, .td {
+  padding: 5px 15px;
+}
+
+#crime th {
+  font-weight: bold;
+}
+
