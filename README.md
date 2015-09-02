@@ -1,4 +1,4 @@
-### Metis Project 3 - Investigating the Prison Population
+# Investigating the Prison Population
 
 This was the third project I completed for the Metis data science bootcamp. I investigated prison population data using the 2004 Survey of Inmates conducted for the Bureau of Justice Statistics.
 
@@ -6,7 +6,7 @@ I initially set out to classify whether inmates were imprisoned for violent or n
 
 You can read more about my findings [on my website](http://www.emilyschuch.com/works/incarceration/).
 
-Technologies used:
+####Technologies used:
 * Python
 * Classification algorithms (logistic regression, SVM, naive Bayes, etc)
 * D3.js
